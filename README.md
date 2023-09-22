@@ -1,75 +1,75 @@
-# Flow Testnet Faucet
+# **Torneira (Faucet) do Flow Testnet**
 
-Deployed at: https://testnet-faucet.onflow.org/
+Implantado em: **https://testnet-faucet.onflow.org/**
 
-## Usage
+## **Uso**
 
-### Create a new account
+### **Criar uma nova conta**
 
-Use the [Flow CLI](https://developers.flow.com/tooling/flow-cli) to generate a new key pair:
+Use o **[Flow CLI](https://developers.flow.com/tooling/flow-cli)** para gerar um novo par de chaves:
 
-```sh
-# This command uses ECDSA_P256 and SHA3_256 by default
+```
+# Este comando usa ECDSA_P256 e SHA3_256 por padrão
 flow keys generate
 ```
 
-Enter the resulting public key into the "Create Account" form, complete the captcha and submit.
+Insira a chave pública resultante no formulário "Criar Conta", complete o captcha e envie.
 
-### Fund an account
+### **Financiar uma conta**
 
-Enter an existing account address into the "Fund Account" form, complete the captcha and submit.
+Insira um endereço de conta existente no formulário "Financiar Conta", complete o captcha e envie.
 
-## Development
+## **Desenvolvimento**
 
-### Create a dotenv file
+### **Crie um arquivo dotenv**
 
-⚠️ The `SIGNER_PRIVATE_KEY` value must match the `FLOW_SERVICEPRIVATEKEY` value in `docker-compose.yml`.
+⚠️ O valor **`SIGNER_PRIVATE_KEY`** deve corresponder ao valor **`FLOW_SERVICEPRIVATEKEY`** em **`docker-compose.yml`**.
 
-```sh
+```
 cp env.example .env
 ```
 
-### Start the Flow Emulator and Postgres database
+### **Inicie o Emulador Flow e o banco de dados Postgres**
 
-```sh
+```
 docker-compose up -d
 ```
 
-### Install dependencies
+### **Instale as dependências**
 
-```sh
+```
 npm install
 ```
 
-### Migrate and seed the database
+### **Migre e popule o banco de dados**
 
-```sh
+```
 npm run db-migrate-dev
 npm run db-seed
 ```
 
-### Deploy contracts
+### **Implante contratos**
 
-⚠️ The `accounts.emulator-account` value in flow.json match the `FLOW_SERVICEPRIVATEKEY` value in `docker-compose.yml`.
+⚠️ O valor **`accounts.emulator-account`** em flow.json deve corresponder ao valor **`FLOW_SERVICEPRIVATEKEY`** em **`docker-compose.yml`**.
 
-```sh
+```
 npm run dev-deploy-contracts
 ```
 
-### Run initial transactions to initialize the FUSD minter
+### **Execute transações iniciais para inicializar o emissor FUSD**
 
-```sh
+```
 npm run initial-transactions
 ```
 
-### Run the Next.js app
+### **Execute o aplicativo Next.js**
 
-```sh
+```
 npm run dev
 ```
 
-### Run eslint, typescript checks, tests
+### **Execute eslint, verificações typescript, testes**
 
-```sh
+```
 npm run check
 ```
